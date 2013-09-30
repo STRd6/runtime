@@ -2,7 +2,8 @@
   var Runtime;
 
   Runtime = function(pkg) {
-    var currentNode, promo;
+    var currentNode, promo, root;
+    root = null;
     currentNode = function() {
       var target;
       target = document.documentElement;
@@ -16,16 +17,14 @@
     };
     return {
       boot: function() {
-        var root;
         root = currentNode();
         promo();
         return root;
       },
-      applyStyleSheet: function(root, name) {
+      applyStyleSheet: function(style) {
         var styleNode;
         styleNode = document.createElement("style");
-        styleNode.innerHTML = require(name);
-        styleNode.className = name;
+        styleNode.innerHTML = style;
         return root.appendChild(styleNode);
       }
     };
