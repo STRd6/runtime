@@ -4,6 +4,10 @@ It should me moved into it's own component one day.
 
     Runtime = (pkg) ->
 
+Hold on to a reference to our root node.
+
+      root = null
+
 Returns the node that is the parent of the script element that contains the code
 that calls this function. If `document.write` has been called before this then the
 results may not be accurate. Therefore be sure to call currentNode before
@@ -48,12 +52,11 @@ promo.
 
         return root
 
-Apply the stylesheet returned from the file `name` to the given node.
+Apply the stylesheet to the root node.
 
-      applyStyleSheet: (root, name) ->
+      applyStyleSheet: (style) ->
         styleNode = document.createElement("style")
-        styleNode.innerHTML = require(name)
-        styleNode.className = name
+        styleNode.innerHTML = style
 
         root.appendChild(styleNode)
 
